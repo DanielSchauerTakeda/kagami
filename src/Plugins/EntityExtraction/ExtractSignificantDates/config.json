@@ -3,7 +3,7 @@
     "description": "Extract significant dates from the chunk of source text provided",
     "execution_settings": {
         "default": {
-            "max_tokens": 60,
+            "max_tokens": 3000,
             "temperature": 0.5,
             "top_p": 0,
             "presence_penalty": 0,

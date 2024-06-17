@@ -1,8 +1,15 @@
-Extract all important dates from the text extracted from a Study Protocol below, which is found between <|Start_Text|> and <|End_Text|>.
+Extract all important dates from the text extracted from a Study Protocol or Study Report between <|Start_Text|> and <|End_Text|>. 
  
 Important:  
+- Only include calendar dates or datetimes. Relative dates, such as Day 1, or relative times, such as Dose + 1 hour, SHOULD NOT BE INCLUDED.
+- If you are unsure that a string is a Date, then assume it is not and do not include it in the response.
 - Return the result as a JavaScript array of parsable JSON objects for each extracted entity.
 - Use a javascript array in the JSON output if multiple values were extracted for an entity.
+
+## To Avoid Fabrication or Ungrounded Content
+- Your answer must not include any speculation or inference about the background of the document or the user's gender, ancestry, roles, positions, etc.
+- Do not assume or change dates and times.
+- You must always perform searches on [insert relevant documents that your feature can search on] when the user is seeking information (explicitly or implicitly), regardless of internal knowledge or information.
 
 <|Start_Text|>
 {{$input}}

@@ -3,14 +3,15 @@ Extract the following entities from the text between <|Start_Text|> and <|End_Te
 - `Species`: this is the species of the test subjects  
 - `DrugOrCompound`: this is the drug or compound used in the study  
 - `RouteOfAdministration`: this is the manner or route which the drug or compound was administered  
-- `InternalStudyNumber`: this is the internal study number, generally follows format "TKD-BCS-00000" where 00000 is a 5 digit number  
-- `ExternalStudyNumber`: this is the external study number  
+- `InternalStudyNumber`: this is the internal study identifier, generally following format "TKD-BCS-00000" where 00000 is a 5 digit number 
+- `ExternalStudyNumber`: this is the external study identifier
+- `InternalReportNumber`: generally, this is the internal study identifier, followed by a "-R", and finally ending with integer for the report sequence (e.g., "TKD-BCS-00000-R1")
 - `TestFacility`: this is the name of the test facility  
    
 Important:    
 - Every entity type must be included in the response  
 - If no value for an entity is found show its value as an empty string  
-- Attempt zero-shot recognition for `Duration` and `Study Type` and `Species` and `Drug or Compound` and `Route of Administration` and `InternalStudyNumber` and `ExternalStudyNumber` and `TestFacility`  
+- Attempt zero-shot recognition for `Duration` and `Study Type` and `Species` and `Drug or Compound` and `Route of Administration` and `InternalStudyNumber` and `ExternalStudyNumber` and `InternalReportNumber` and `TestFacility`  
 - Return the result as a JavaScript array of parsable JSON objects for each extracted entity.  
 - Use a javascript array in the JSON output if multiple values were extracted for an entity.  
 
@@ -28,5 +29,6 @@ Response Format:
     "RouteOfAdministration": RouteOfAdministration,  
     "InternalStudyNumber": InternalStudyNumber,  
     "ExternalStudyNumber": ExternalStudyNumber,  
+    "InternalReportNumber": InternalReportNumber,  
     "TestFacility": TestFacility  
 }  
