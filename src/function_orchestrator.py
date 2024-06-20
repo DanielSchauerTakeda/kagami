@@ -44,6 +44,7 @@ def orchestrator(context: df.DurableOrchestrationContext):
         logging.info(
             f"Orchestration {context.instance_id}: entity extraction performed over all chunks."
         )
+        logging.warn(f"Orchestration {context.instance_id}... all results: {all_extracted_entity_results}")
 
     final_result["mode_entities"] = yield context.call_activity(
         "find_mode_entities", all_extracted_entity_results
@@ -53,9 +54,9 @@ def orchestrator(context: df.DurableOrchestrationContext):
 
     if context.is_replaying is False:
         logging.info(f"Orchestration {context.instance_id}: mode entities calculated.")
-
+        logging.warn(f"Orchestration {context.instance_id}... final result: {final_result}")
     flatten_final_result = flatten_json(final_result)
-
+    logging.warn(f"Orchestration {context.instance_id}... flattened final result: {flatten_final_result}")
     yield context.call_activity("store_results", flatten_final_result)
 
     return flatten_final_result

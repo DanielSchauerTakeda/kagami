@@ -2,7 +2,7 @@ import azure.durable_functions as df
 from langchain_community.document_loaders import AzureAIDocumentIntelligenceLoader
 from langchain.text_splitter import MarkdownHeaderTextSplitter
 from langchain_core.documents import Document
-import os, time
+import os, time, logging
 from typing import List
 
 import tiktoken
@@ -42,6 +42,7 @@ def chunk_file(fileUri: str) -> List[Document]:
 
     for split in splits:
         chunks.append(split.page_content)
+        logging.info(f"Chunk: {split.page_content}")
 
     end_time = time.time()
     elapsed_time = end_time - start_time
