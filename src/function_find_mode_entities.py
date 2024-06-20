@@ -58,9 +58,8 @@ def find_mode_entities(studies: List[any]) -> dict:
 
     end_time = time.time()
     elapsed_time = end_time - start_time
-    print(f"find_mode_entities took {elapsed_time} seconds for {len(studies)} entity results.")
-
-    return {
+    logging.info(f"find_mode_entities took {elapsed_time} seconds for {len(studies)} entity results.")
+    return_object = {
         "duration": mode_study.duration,
         "species": mode_study.species,
         "drug_or_compound": mode_study.drug_or_compound,
@@ -71,6 +70,8 @@ def find_mode_entities(studies: List[any]) -> dict:
         "stakeholders": mode_study.stakeholders,
         "significant_dates": mode_study.significant_dates,
     }
+    logging.info(return_object)
+    return return_object
 
 
 # seems like python is passing by reference so we don't need to return the collection

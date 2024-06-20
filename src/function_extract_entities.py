@@ -44,7 +44,7 @@ async def extract_entities(chunk: Document) -> Study:
     try:
         # this needs better consistent json output before refining the parsing
         name_list = json.loads(stakeholders_result.value[0].content)
-        study.stakeholders = [entry["name"] for entry in name_list]
+        study.stakeholders = [entry["Name"] for entry in name_list]
     except (json.JSONDecodeError, KeyError, AttributeError) as e:
         pass
 

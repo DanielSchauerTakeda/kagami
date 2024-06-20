@@ -1,0 +1,10 @@
+Extract the names and roles (e.g., Study Director, Study Monitor, Study Author, etc.) for all persons associated with a Study from the text extracted from a Study Protocol below, which is found between <|Start_Text|> and <|End_Text|>.
+ 
+Important:  
+- Each extracted person should be returned as a valid JSON object with both a Role and a Name like this: `{"Role":"role_name_description", "Name": "firstname lastname"}`
+- Return the result as a JavaScript array of parsable JSON objects for each person, like this: `[{"Role":"Study Director", "Name": None}, {"Role":"Study Monitor", "Name": "Angie Fenton"}]`
+- Use a javascript array in the JSON output if multiple values were extracted for an entity.
+
+<|Start_Text|>
+{{$input}}
+<|End_Text|>
